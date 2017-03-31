@@ -14,6 +14,7 @@ var loadExampleData = require('./loadExampleData').loadExampleData;
 var multer = require('multer');
 var storage = multer.diskStorage({
   destination: './uploads/',
+  inMemory: true,
   filename: function (req, file, cb) {
     // Mimetype stores the file type, set extensions according to filetype
     switch (file.mimetype) {
@@ -34,7 +35,8 @@ var storage = multer.diskStorage({
     cb(null, file.originalname.slice(0, 4) + Date.now() + ext);
   }
 });
-var upload = multer({ storage: storage });
+var upload = multer({ storage: multer.memoryStorage({}) });
+
 var http = require('http');
 loadExampleData();
 
