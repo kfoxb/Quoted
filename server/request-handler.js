@@ -17,6 +17,8 @@ var phoneNumber = twilioKeys.phoneNumber;
 //require the Twilio module and create a REST client
 var client = require('twilio')(accountSid, authToken);
 
+//FileUpload Requirements
+var parse = require('csv-parse');
 
 // exports.createSalt = function() {
 //   return crypto.randomBytes(20).toString('hex');
@@ -224,9 +226,40 @@ exports.setVoiceMessage = function(req, res) {
 };
 
 exports.userAddcontacts = function(req, res) {
-  if (req.file && req.file.originalname) {
-    console.log(`Received file ${req.file.originalname}`);
-  }
+  console.log('this is req.file', req.file);
+  console.log('this is buffer', req.file.buffer);
+  console.log(req.file.buffer.toString('ascii'));
+  // if (req.file && req.file.originalname) {
+  //   console.log(`Received file ${req.file.originalname}`);
+  // }
+
+  // var output = [];
+  // // Create the parser
+  // var parser = parse({delimiter: ':'});
+  // // Use the writable stream api
+  // parser.on('readable', function() {
+  //   while (record = parser.read()) {
+  //     output.push(record);
+  //   }
+  // });
+  // // Catch any error
+  // parser.on('error', function(err) {
+  //   console.log(err.message);
+  // });
+  // // When we are done, test that the parsed output matched what expected
+  // parser.on('finish', function() {
+  //   output.should.eql([
+  //     [ 'root', 'x', '0', '0', 'root', '/root', '/bin/bash' ],
+  //     [ 'someone', 'x', '1022', '1022', 'a funny cat', '/home/someone', '/bin/bash' ]
+  //   ]);
+  // });
+  // // Now that setup is done, write data to the stream
+  // parser.write('root:x:0:0:root:/root:/bin/bash\n');
+  // parser.write('someone:x:1022:1022:a funny cat:/home/someone:/bin/bash\n');
+  // // Close the readable stream
+  // parser.end();
+
+
 
   res.send({ responseText: req.file.path }); // You can send any response to the user here
 };
