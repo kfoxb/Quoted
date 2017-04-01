@@ -46,18 +46,20 @@ class Inputs extends React.Component {
     return (                  
       <div className="row inputs"> 
         <div className="col-sm-10">
-          <tbody>
-            <tr>
-              <td><input  type="checkbox" 
-                          name="sendSMS"
-                          value={this.props.state.sendSMS}
-                          onClick={this.props.handleCheckBox} /> Send SMS Message </td>
-              <td><input  type="checkbox" 
-                          name="sendPhone"
-                          value={this.props.state.sendPhone}
-                          onClick={this.props.handleCheckBox} /> Send Phone Message </td> 
-            </tr>                         
-          </tbody>
+          <table>
+            <tbody>
+              <tr>
+                <td><input  type="checkbox" 
+                            name="sendSMS"
+                            value={this.props.state.sendSMS}
+                            onClick={this.props.handleCheckBox} /> Send SMS Message </td>
+                <td><input  type="checkbox" 
+                            name="sendPhone"
+                            value={this.props.state.sendPhone}
+                            onClick={this.props.handleCheckBox} /> Send Phone Message </td> 
+              </tr>                         
+            </tbody>
+          </table>
           <Message handleTextInputChange={this.props.handleTextInputChange}/>         
           <SoundIcon recordingPublicUrl={this.props.recordingPublicUrl} />        
           <button onClick={this.props.sendInfo} className="btn btn-primary"> Contact your group </button>
