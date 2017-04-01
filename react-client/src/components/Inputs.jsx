@@ -65,7 +65,7 @@ class Inputs extends React.Component {
           <button onClick={this.props.sendInfo} className="btn btn-primary"> Contact your group </button>
           </div>
       </div>
-    )
+    );
   }
 }
 
